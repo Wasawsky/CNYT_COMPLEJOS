@@ -62,20 +62,20 @@ def convcartesianoapolar(c):
 
 
 def sumaVectores(v1,v2):
-    """Recibo 2 vectores complejos y sumo -> vector complejo
+    """Recibo 2 vectores complejos sencillos de 1*n y sumo -> vector complejo
     """
     for j in range(len(v1)):
         v1[j]=suma(v1[j],v2[j])
     return v1
 def inversa(v1):
-    """Recibo 1 vector complejo y hallo inverso aditivo -> vector complejo
+    """Recibo 1 vector complejo sencillo de 1*n y hallo inverso aditivo -> vector complejo
     """
     for j in range(len(v1)):
         v1[j]=multiplicacion((-1,0),v1[j])
 
     return v1
 def multiplicacionEscalarVector(v1,c):
-    """ Recibo un vector complejo y un escalar y hago la multiplicacion escalar de vector -> vector complejo
+    """ Recibo un vector complejo sencillo de 1*n y un escalar y hago la multiplicacion escalar de vector -> vector complejo
     """
     for j in range(len(v1)):
         v1[j]=multiplicacion(v1[j],c)
@@ -122,32 +122,38 @@ def matrizAdjunta(m1):
     """ Recibo una matriz compleja y determino matriz adjunta -> matriz compleja
     """
     return matrizConjugada(transpuesta(m1))
-def multiplicacionVectorVector(v1,v2):
-    """ Recibo 2 vectores complejos y los multiplico -> numero complejo
-    """
-    resultado=(0,0)
-    for j in range(len(v1)):
-        resultado=suma(multiplicacion(v1[j],v2[j]),resultado)
-    return resultado
+
 def multiplicacionMatrizMatriz(m1,m2):
     """ Recibo 2 matrices complejas y hallo la multiplicacion de matrices -> matriz compleja
         se debe cumplr a:m*n, b:n*p
     """
-    m3=[[(0,0) for x in m2] for x in m1[0]]
+    m3=[[(0,0) for x in m2[0]] for x in m1]
 
-    for j in range(len(m1[0])):
-        for k in range(len(m2)):
-            
-    for i in m1:
-        print(i)
+    for j in range(len(m1)):
+        for k in range(len(m2[0])):
+            resultado=(0,0)
+            for h in range(len(m2)):
+                resultado=suma(multiplicacion(m1[j][h],m2[h][k]),resultado)
+            m3[j][k]=resultado
+    return m3
+def accion(m1,v1):
+    """ Recibo 1 matriz compleja de n*n y un vector de n*1
+            y hallo la accion de la matriz sobre el vector   -> vector complejo
+    """
+    return multiplicacionMatrizMatriz(m1,v2)
 
-    for i in m2:
-        print(i)
+def productoInternoVector(v1,v2):
+    """ Recibo 2 vectores de n*1 y calculo el producto interno -> numero complejo
+    """
+    v1=transpuesta(v1)
+    return multiplicacionMatrizMatriz(v1,v2)[0][0]
+def sumaDiagonal(m1):
+    """ Recibo una matriz y calculo la suma de los elementos diagonales -> numero complejo
+    """
+    sumaD=(0,0)
+
+
     
-    for i in m3:
-        print(i)
-
-
 #[[(1,2),(2,3),(3,4)],[(1,2),(2,3),(3,4)]]
 """""""""
 v1=[]
@@ -163,11 +169,11 @@ for i in range(3):
 
 m1=[]
 m2=[]
-for i in range(2):
+for i in range(3):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m1.append(vf)
 
-for i in range(2):
+for i in range(3):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m2.append(vf)
 
@@ -183,8 +189,9 @@ for i in range(2):
 #print(transpuesta(m1))
 #print(matrizConjugada(m1))
 #print(matrizAdjunta(m1))
-#print(multiplicacionVectorVector(v1,v2))
-print(multiplicacionMatrizMatriz(m1,m2))
+#print(multiplicacionMatrizMatriz(m1,m2))
+#print(accion(m1,v1))
+print(productoInternoVector(m1,m2))
 
 ################################
 #c = tuple(map(float,input().split(",")))
@@ -202,3 +209,29 @@ print(multiplicacionMatrizMatriz(m1,m2))
 #print(convcartesianoapolar(c))
 #print(fase(c))
 ################################
+
+
+"""
+###ANOTACIONES
+
+FORMA DE VECTOR SENCILLA 1*N
+
+V = [V1,V2,V3,...VN]
+
+FORMA DE VECTOR N*1 EN MATRIZ
+
+M = [[V1],[V2],[V3],....,[VN]]
+
+FORMA DE VECTOR 1*N EN MATRIZ
+
+M = [[V1,V2,V3,...VN]]
+
+FORMA DE MATRIZ M*N
+
+MA=[MA1[MA11, MA12, MA13, .....MA1N],
+    MA2[MA21, MA22, MA23, .....MA1N],
+    MA3[MA31, MA32, MA33, .....MA1N],
+    ......,
+    MAM[MAM1, MAM2, MAM3,.....,MAMN]]
+
+"""
