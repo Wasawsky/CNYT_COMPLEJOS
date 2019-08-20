@@ -102,36 +102,75 @@ def multiplicacionEscalarMatriz(m1,c):
         m1[j]=multiplicacionEscalarVector(m1[j],c)
     return m1
 def transpuesta(m1):
+    """Recibo una matriz compleja y determino su transpuesta -> matriz compleja
+    """
     m2=[[(0,0) for x in m1] for x in m1[0]]
 
     for j in range(len(m1[0])):
         for k in range(len(m1)):
             m2[j][k]=m1[k][j]
     return m2
+def matrizConjugada(m1):
+    """ Recibo una matriz compleja y determino la matriz conjugada -> matriz compleja
+    """
+    for j in range(len(m1)):
+        for k in range(len(m1[0])):
+            m1[j][k]=conjugado(m1[j][k])
+
+    return m1
+def matrizAdjunta(m1):
+    """ Recibo una matriz compleja y determino matriz adjunta -> matriz compleja
+    """
+    return matrizConjugada(transpuesta(m1))
+def multiplicacionVectorVector(v1,v2):
+    """ Recibo 2 vectores complejos y los multiplico -> numero complejo
+    """
+    resultado=(0,0)
+    for j in range(len(v1)):
+        resultado=suma(multiplicacion(v1[j],v2[j]),resultado)
+    return resultado
+def multiplicacionMatrizMatriz(m1,m2):
+    """ Recibo 2 matrices complejas y hallo la multiplicacion de matrices -> matriz compleja
+        se debe cumplr a:m*n, b:n*p
+    """
+    m3=[[(0,0) for x in m2] for x in m1[0]]
+
+    for j in range(len(m1[0])):
+        for k in range(len(m2)):
+            
+    for i in m1:
+        print(i)
+
+    for i in m2:
+        print(i)
+    
+    for i in m3:
+        print(i)
+
 
 #[[(1,2),(2,3),(3,4)],[(1,2),(2,3),(3,4)]]
 """""""""
 v1=[]
 v2=[]
-for i in range(4):
+for i in range(3):
     c = tuple(map(float, input().split(",")))
     v1.append(c)
 
-for i in range(4):
+for i in range(3):
     c = tuple(map(float, input().split(",")))
     v2.append(c)
 """""""""
-"""""""""
+
 m1=[]
 m2=[]
-for i in range(3):
+for i in range(2):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m1.append(vf)
 
-for i in range(4):
+for i in range(2):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m2.append(vf)
-"""""""""
+
 #c = tuple(map(float,input().split(",")))
 #print(v1)
 #print(v2)
@@ -142,6 +181,10 @@ for i in range(4):
 #print(inversaMatriz(m1))
 #print(multiplicacionEscalarMatriz(m1,c))
 #print(transpuesta(m1))
+#print(matrizConjugada(m1))
+#print(matrizAdjunta(m1))
+#print(multiplicacionVectorVector(v1,v2))
+print(multiplicacionMatrizMatriz(m1,m2))
 
 ################################
 #c = tuple(map(float,input().split(",")))
