@@ -1,0 +1,169 @@
+Suma complejos
+3,-1
+1,4
+R:
+4,3
+Resta
+
+
+R:
+
+Multiplicacion
+3,-1
+1,4
+R:
+7,11
+Division
+-2,1
+1,2
+R:
+0,1
+Modulo
+1,-1
+R:
+1.414213
+Conjugado
+1,2
+R:
+1,-2
+Fase
+
+R:
+
+Convertir Polar a Cartesiano
+
+R:
+
+Convertir Cartesiano a Polar
+
+R:
+
+Suma de Vectores
+6,-4 7,3 4.2,-8.1 0,-3
+16,2.3 0,-7 6,0 0,-4
+R:
+22,-1.7 7,-4 10.2,-8.1 0,-7
+Inversa de Vectores
+6,-4 7,3 4.2,-8.1 0,-3
+R:
+-6,4 -7,-3 -4.2,8.1 0,3
+Multiplicacion de Escalar Por Vector
+6,3 0,0 5,1 4,0
+3,2
+R:
+12,21 0,0 13,13 12,8
+Suma de Matrices
+6,-4 6,-4
+7,3 7,3
+4.2,-8.1 4.2,-8.1
+0,-3 0,-3
+R:
+
+Inversa de Matriz
+16,2.3 16,2.3
+0,-7 0,-7
+6,0 6,0
+0,-4 0,-4
+R:
+
+Multiplicacion de Escalar Por Matriz
+1,-2 2,3
+3,4 4,-5
+1,-2 2,3
+3,4 4,-5
+4,0
+R:
+
+Transpuesta
+1,-2 2,3
+3,4 4,-5
+1,-2 2,3
+3,4 4,-5
+R:
+
+Matriz Conjugada
+1,-2 2,3 4,5
+3,4 4,-5 5,6
+1,-2 2,3 7,8
+R:
+
+Matriz Adjunta
+1,-2 2,3 4,5
+3,4 4,-5 5,6
+1,-2 2,3 7,8
+R:
+
+Multiplicacion de Matriz Por Matriz
+3,2 0,0 5,-6
+1,0 4,2 0,1
+4,-1 0,0 4,0
+5,0 2,-1 6,-4
+0,0 4,5 2,0
+7,-4 2,7 0,0
+R:
+26,-52 60,24 26,0
+9,7 1,29 14,0
+48,-21 15,22 20,-22
+Accion de Una Matriz Sobre un Vector
+3,2 0,0 5,-6
+1,0 4,2 0,1
+4,-1 0,0 4,0
+5,0 2,-1 6,-4
+R:
+
+Producto Interno Vector
+5,0 3,0 -7,0
+6,0 2,0 0,0
+R:
+
+Suma en Diagonal de Matriz
+1,0 0,0 0,0
+0,0 1,0 0,0
+0,0 0,0 1,0
+R:
+3,0
+Producto Interno Matriz
+1,0 -1,0
+1,0 1,0
+2,0 1,0
+1,0 3,0
+R:
+5
+
+
+
+1,0 2,0
+-2,0 0,0
+1,0 0,0 2,0
+0,0 2,0 0,0
+
+
+
+
+
+5,0
+2,-1
+6,-4
+3,2 0,0 5,-6
+1,0 4,2 0,1
+4,-1 0,0 4,0
+
+1,-2 2,3 4,5
+
+1,-2
+2,3
+4,5
+
+1,-2 2,3 4,5
+1,-2 2,3 4,5
+
+5,0
+3,0
+-7,0
+6,0
+2,0
+0,0
+
+
+
+
