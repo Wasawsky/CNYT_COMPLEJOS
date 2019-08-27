@@ -148,11 +148,24 @@ def productoInternoVector(v1,v2):
     v1=transpuesta(v1)
     return multiplicacionMatrizMatriz(v1,v2)[0][0]
 def sumaDiagonal(m1):
-    """ Recibo una matriz y calculo la suma de los elementos diagonales -> numero complejo
+    """ Recibo una matriz de n*n y calculo la suma de los elementos diagonales -> numero complejo
     """
     sumaD=(0,0)
-
-
+    for j in range(len(m1)):
+        sumaD=suma(m1[j][j],sumaD)
+    return sumaD
+def productoInternoMatriz(m1,m2):
+    """ Recibo 2 matrices complejas y calculo el producto interno -> numero complejo
+    """
+    return sumaDiagonal(multiplicacionMatrizMatriz(matrizAdjunta(m1),m2))
+def normaVector(v1):#???
+    """ Recibo 1 vector de n*1 y hallo su norma -> numero real
+    """
+    return math.sqrt(productoInternoVector(v1,v1)[0])
+def normaMatriz(m1):#???
+    """ Recibo 1 matriz de n*m y hallo su norma -> numero real
+    """
+    return math.sqrt(productoInternoMatriz(m1,m1)[0])
     
 #[[(1,2),(2,3),(3,4)],[(1,2),(2,3),(3,4)]]
 """""""""
@@ -169,14 +182,14 @@ for i in range(3):
 
 m1=[]
 m2=[]
-for i in range(3):
+for i in range(2):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m1.append(vf)
-
+"""""""""
 for i in range(3):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m2.append(vf)
-
+"""""""""
 #c = tuple(map(float,input().split(",")))
 #print(v1)
 #print(v2)
@@ -191,8 +204,11 @@ for i in range(3):
 #print(matrizAdjunta(m1))
 #print(multiplicacionMatrizMatriz(m1,m2))
 #print(accion(m1,v1))
-print(productoInternoVector(m1,m2))
-
+#print(productoInternoVector(m1,m2))
+#print(sumaDiagonal(m1))
+#print(productoInternoMatriz(m1,m2))
+#print(normaVector(m1))#
+#print(normaMatriz(m1))#
 ################################
 #c = tuple(map(float,input().split(",")))
 #c1 = tuple(map(int,input().split(",")))
