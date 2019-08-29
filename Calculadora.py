@@ -128,18 +128,15 @@ def multiplicacionMatrizMatriz(m1,m2):
                 resultado=suma(multiplicacion(m1[j][h],m2[h][k]),resultado)
             m3[j][k]=resultado
     return m3
-
-
 def accion(m1,v1):
     """ Recibo 1 matriz compleja de n*n y 1 vector de n*1
             y hallo la accion de la matriz sobre el vector   -> vector complejo
     """
-    return multiplicacionMatrizMatriz(m1,v1)
+    return multiplicacionMatrizMatriz(m1,transpuesta([v1]))
 def productoInternoVector(v1,v2):
     """ Recibo 2 vectores de n*1 y calculo el producto interno -> numero complejo
     """
-    v1=transpuesta(v1)
-    return multiplicacionMatrizMatriz(v1,v2)[0][0]
+    return multiplicacionMatrizMatriz(matrizConjugada([v1]),transpuesta([v2]))[0][0]
 def sumaDiagonal(m1):
     """ Recibo una matriz de n*n y calculo la suma de los elementos diagonales -> numero complejo
     """
@@ -151,35 +148,72 @@ def productoInternoMatriz(m1,m2):
     """ Recibo 2 matrices complejas y calculo el producto interno -> numero complejo
     """
     return sumaDiagonal(multiplicacionMatrizMatriz(matrizAdjunta(m1),m2))
-def normaVector(v1):#???
+def normaVector(v1):
     """ Recibo 1 vector de n*1 y hallo su norma -> numero real
     """
-    return math.sqrt(productoInternoVector(matrizConjugada(v1),v1)[0])
-def normaMatriz(m1):#???
+    print(productoInternoVector(v1,v1)[0])
+    return math.sqrt(productoInternoVector(v1,v1)[0])
+def normaMatriz(m1):
     """ Recibo 1 matriz de n*m y hallo su norma -> numero real
     """
     return math.sqrt(productoInternoMatriz(m1,m1)[0])
+def distanciaVectorVector(v1,v2):
+    """ Recibo 2 vectores y determino su distancia -> numero real
+    """
+    print(sumaVectores(v1,inversa(v2)))
+    return normaVector(sumaVectores(v1,inversa(v2)))
+def distanciaMatrizMatriz(m1,m2):
+    """ Recibo 2 matrices y determino su distancia -> numero real
+    """
+    return normaMatriz(sumaMatrices(m1,inversaMatriz(m2)))
+def matrizIdentidad(n):
+    """ Recibo un entero y determino la matriz identidad n*n -> matriz 
+    """
+    ident=[[(0,0) for x in range(n)] for x in range(n)]
+    for j in range(n):
+        ident[j][j]=(1,0)
+    return ident
+def matrizUnitaria(m1):
+    """ Determino si una matriz es unitaria -> boolean
+    """
+    ident=matrizIdentidad(len(m1))
+    m1=multiplicacionMatrizMatriz(matrizAdjunta(m1),m1)
+    esUnitaria=True
+    for j in range(len(m1)):
+        for k in range(len(m1)):
+            if (m1[j][k]!=ident[j][k]):
+                esUnitaria=False
+                break
+    return esUnitaria
+def matrizHermitian(m1):
+    """ Determino si una matriz es hermitian -> boolean
+    """
+    esHermitian=True
+    m2=matrizAdjunta(m1)
+    for j in range(len(m1)):
+        for k in range(len(m1)):
+            if (resta(m1[j][k],m2[j][k])!=(0,0)):
+                esHermitian=False
+                break
+    return esHermitian
     
 #[[(1,2),(2,3),(3,4)],[(1,2),(2,3),(3,4)]]
-"""""""""
-v1=[]
-v2=[]
-for i in range(3):
-    c = tuple(map(float, input().split(",")))
-    v1.append(c)
 
-for i in range(3):
-    c = tuple(map(float, input().split(",")))
-    v2.append(c)
+
+#v1=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
+#v2=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
 """""""""
 
+"""""""""
+
+
+"""""""""
 m1=[]
 m2=[]
 for i in range(2):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m1.append(vf)
-"""""""""
-for i in range(3):
+for i in range(2):
     vf=[tuple(map(float, x.split(","))) for x in (input().split(" "))]
     m2.append(vf)
 """""""""
@@ -197,11 +231,15 @@ for i in range(3):
 #print(matrizAdjunta(m1))
 #print(multiplicacionMatrizMatriz(m1,m2))
 #print(accion(m1,v1))
-#print(productoInternoVector(m1,m2))
+#print(productoInternoVector(v1,v2))
 #print(sumaDiagonal(m1))
 #print(productoInternoMatriz(m1,m2))
-#6print(normaVector(m1))
-#print(normaMatriz(m1))#
+#print(normaVector(v1))
+#print(normaMatriz(m1))
+#print(distanciaVectorVector(v1,v2))
+#print(distanciaMatrizMatriz(m1,m2))
+#print(matrizUnitaria(m1))
+#print(matrizHermitian(m1))
 ################################
 #c = tuple(map(float,input().split(",")))
 #c1 = tuple(map(int,input().split(",")))
