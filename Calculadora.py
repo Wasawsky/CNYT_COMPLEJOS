@@ -64,9 +64,12 @@ def convcartesianoapolar(c):
 def sumaVectores(v1,v2):
     """Recibo 2 vectores complejos  y sumo -> vector complejo
     """
-    for j in range(len(v1)):
-        v1[j]=suma(v1[j],v2[j])
-    return v1
+    if (len(v1)!=len(v2)):
+        return "Imposible"
+    else:
+        for j in range(len(v1)):
+            v1[j]=suma(v1[j],v2[j])
+        return v1
 def inversa(v1):
     """Recibo 1 vector complejo y hallo inverso aditivo -> vector complejo
     """
@@ -82,9 +85,12 @@ def multiplicacionEscalarVector(v1,c):
 def sumaMatrices(m1,m2):
     """Recibo 2 matrices complejas y las sumo -> matriz compleja
     """
-    for j in range(len(m1)):
-        m1[j]=sumaVectores(m1[j],m2[j])
-    return m1
+    if (len(m1)!=len(m2)or len(m1[0])!=len(m2[0])):
+        return "Imposible"
+    else:
+        for j in range(len(m1)):
+            m1[j]=sumaVectores(m1[j],m2[j])
+        return m1
 def inversaMatriz(m1):
     """Recibo matriz compleja y hallo inverso aditivo -> matriz compleja
     """
@@ -120,19 +126,25 @@ def multiplicacionMatrizMatriz(m1,m2):
     """Recibo 2 matrices complejas y hallo la multiplicacion de matrices -> matriz compleja
        se debe cumplr a:m*n, b:n*p
     """
-    m3=[[(0,0) for x in m2[0]] for x in m1]
-    for j in range(len(m1)):
-        for k in range(len(m2[0])):
-            resultado=(0,0)
-            for h in range(len(m2)):
-                resultado=suma(multiplicacion(m1[j][h],m2[h][k]),resultado)
-            m3[j][k]=resultado
-    return m3
+    if (len(m1[0])!=len(m2)):
+        return "Imposible"
+    else:
+        m3=[[(0,0) for x in m2[0]] for x in m1]
+        for j in range(len(m1)):
+            for k in range(len(m2[0])):
+                resultado=(0,0)
+                for h in range(len(m2)):
+                    resultado=suma(multiplicacion(m1[j][h],m2[h][k]),resultado)
+                m3[j][k]=resultado
+        return m3
 def accion(m1,v1):
     """ Recibo 1 matriz compleja de n*n y 1 vector de n*1
             y hallo la accion de la matriz sobre el vector   -> vector complejo
     """
-    return multiplicacionMatrizMatriz(m1,transpuesta([v1]))
+    if (len(m1[0])!=len(v1)):
+        return "Imposible"
+    else:
+        return multiplicacionMatrizMatriz(m1,transpuesta([v1]))
 def sumaDiagonal(m1):
     """ Recibo una matriz de n*n y calculo la suma de los elementos diagonales -> numero complejo
     """
@@ -143,7 +155,10 @@ def sumaDiagonal(m1):
 def productoInternoMatriz(m1,m2):
     """ Recibo 2 matrices complejas y calculo el producto interno -> numero complejo
     """
-    return sumaDiagonal(multiplicacionMatrizMatriz(matrizAdjunta(m1),m2))
+    if (len(m1[0])!=len(m2)):
+        return "Imposible"
+    else:
+        return sumaDiagonal(multiplicacionMatrizMatriz(matrizAdjunta(m1),m2))
 def normaMatriz(m1):
     """ Recibo 1 matriz de n*m y hallo su norma -> numero real
     """
@@ -151,7 +166,10 @@ def normaMatriz(m1):
 def distanciaMatrizMatriz(m1,m2):
     """ Recibo 2 matrices y determino su distancia -> numero real
     """
-    return normaMatriz(sumaMatrices(m1,inversaMatriz(m2)))
+    if (len(m1)!=len(m2)or len(m1[0])!=len(m2[0])):
+        return "Imposible"
+    else:
+        return normaMatriz(sumaMatrices(m1,inversaMatriz(m2)))
 def matrizIdentidad(n):
     """ Recibo un entero y determino la matriz identidad n*n -> matriz 
     """
@@ -162,26 +180,32 @@ def matrizIdentidad(n):
 def matrizUnitaria(m1):
     """ Determino si una matriz es unitaria -> boolean
     """
-    ident=matrizIdentidad(len(m1))
-    m1=multiplicacionMatrizMatriz(matrizAdjunta(m1),m1)
-    esUnitaria=True
-    for j in range(len(m1)):
-        for k in range(len(m1)):
-            if (m1[j][k]!=ident[j][k]):
-                esUnitaria=False
-                break
-    return esUnitaria
+    if (len(m1)!=len(m1[0])):
+        return "Imposible"
+    else:
+        ident=matrizIdentidad(len(m1))
+        m1=multiplicacionMatrizMatriz(matrizAdjunta(m1),m1)
+        esUnitaria=True
+        for j in range(len(m1)):
+            for k in range(len(m1)):
+                if (m1[j][k]!=ident[j][k]):
+                    esUnitaria=False
+                    break
+        return esUnitaria
 def matrizHermitian(m1):
     """ Determino si una matriz es hermitian -> boolean
     """
-    esHermitian=True
-    m2=matrizAdjunta(m1)
-    for j in range(len(m1)):
-        for k in range(len(m1)):
-            if (resta(m1[j][k],m2[j][k])!=(0,0)):
-                esHermitian=False
-                break
-    return esHermitian
+    if (len(m1)!=len(m1[0])):
+        return "Imposible"
+    else:
+        esHermitian=True
+        m2=matrizAdjunta(m1)
+        for j in range(len(m1)):
+            for k in range(len(m1)):
+                if (resta(m1[j][k],m2[j][k])!=(0,0)):
+                    esHermitian=False
+                    break
+        return esHermitian
 def productoTensor(m1,m2):
     """ Determino el producto tensor de dos matrices complejas -> matriz compleja
     """
