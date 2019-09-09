@@ -13,15 +13,15 @@ class PruebaCalculadora(unittest.TestCase):
     def test_division(self):
         self.assertEqual(Calculadora.division((-2,1),(1,2)),(0.0,1.0))
     def test_modulo(self):
-        self.assertEqual(Calculadora.modulo((1,-1)),1.41)
+        self.assertEqual(Calculadora.modulo((1,-1)),1.4142135623730951)
     def test_conjugado(self):
         self.assertEqual(Calculadora.conjugado((1,-1)),(1,1))
     def test_fase(self):
         self.assertEqual(Calculadora.fase((1,1)),(45.0))
     def test_convpolaracartesiano(self):
-        self.assertEqual(Calculadora.convpolaracartesiano((3.16,108.43)),(-1.0,3.0))
+        self.assertEqual(Calculadora.convpolaracartesiano((3.16,108.43)),(-0.999020803757226,2.9979255217000085))
     def test_convcartesianoapolar(self):
-        self.assertEqual(Calculadora.convcartesianoapolar((1,1)),(1.41,45.0))
+        self.assertEqual(Calculadora.convcartesianoapolar((1,1)),(1.4142135623730951,45.0))
     def test_sumaVectores(self):
         self.assertEqual(Calculadora.sumaVectores([(6.0, -4.0), (7.0, 3.0), (4.2, -8.1), (0.0, -3.0)],[(16.0, 2.3), (0.0, -7.0), (6.0, 0.0), (0.0, -4.0)]),[(22.0, -1.7000000000000002), (7.0, -4.0), (10.2, -8.1), (0.0, -7.0)])
     def test_sumaVectoresImposible(self):
