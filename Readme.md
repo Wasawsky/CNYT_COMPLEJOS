@@ -3,6 +3,8 @@
 
 **Una calculadora construida apartir del lenguaje Python que tienen varias funcionalidades.**
 
+Generalidades:
+
 Un numero complejo es una expresion compuesta por numeros reales y un numero imaginario:
 
 c = a + b * *i*
@@ -18,7 +20,18 @@ c = ( a , b )
 
 donde b es el termino real que acompaña a la parte imaginaria de la expresion.
 
-Descargar libreria y empezar a usar.
+# COMO USAR
+
+Esta libreria esta programada en la version de Python 3.7.4 y funciona para las versiones 3.7.* 
+Debe tener instalado un entorno de desarrollo o un editor de texto donde se pueda compilar el archivo.
+
+Si no posee uno puede ingresar a https://www.python.org/ para descargar la ultima version.
+
+
+Despues de tenerlo, puede crear un archivo .py en el mismo directorio del archivo Calculadora.py
+
+En caso de que tenga problemas puede ejecutar el archivo Pruebas.py para ejecutar las pruebas establecidas.
+En el repositorio existe un archivo Entradas_Manuales en las que puede ver codigo que le puede ayudar a hacer lectura de datos para la calculadora por teclado; tambien esta el archivo Casos_Prueba si desea usar el archivo de Entradas_Manuales para probar casos de prueba.
 
 ## FUNCIONALIDADES:
 * Sencillas
