@@ -33,6 +33,16 @@ Despues de tenerlo, puede crear un archivo .py en el mismo directorio del archiv
 En caso de que tenga problemas puede ejecutar el archivo Pruebas.py para ejecutar las pruebas establecidas.
 En el repositorio existe un archivo Entradas_Manuales en las que puede ver codigo que le puede ayudar a hacer lectura de datos para la calculadora por teclado; tambien esta el archivo Casos_Prueba si desea usar el archivo de Entradas_Manuales para probar casos de prueba.
 
+### Como usarlo por consola?
+
+Si desea usarlo por consola, ubique la consola en la carpeta donde esta el archivo Calculadora.py y escriba en la consola
+
+        $ py Calculadora.py
+
+Para ejecutar las pruebas escriba en la consola
+
+        $ py Pruebas.py
+
 ## FUNCIONALIDADES:
 * Sencillas
     - Sumar
