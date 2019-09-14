@@ -30,6 +30,19 @@ Si no posee uno puede ingresar a https://www.python.org/ para descargar la ultim
 
 Despues de tenerlo, puede crear un archivo .py en el mismo directorio del archivo Calculadora.py
 
+Importe la libreria en el nuevo archivo y use las operaciones de manera directa
+Por ejemplo el siguiente codigo le indicara la suma de 2 complejos:
+
+`import Calculadora`
+
+`a=Calculadora.suma((1,0),(2,1))`
+
+`print(a)`
+
+Producira un resultado:
+
+`(3,1)`
+
 En caso de que tenga problemas puede ejecutar el archivo Pruebas.py para ejecutar las pruebas establecidas.
 En el repositorio existe un archivo Entradas_Manuales en las que puede ver codigo que le puede ayudar a hacer lectura de datos para la calculadora por teclado; tambien esta el archivo Casos_Prueba si desea usar el archivo de Entradas_Manuales para probar casos de prueba.
 
@@ -42,6 +55,19 @@ Si desea usarlo por consola, ubique la consola en la carpeta donde esta el archi
 Para ejecutar las pruebas escriba en la consola
 
         $ py Pruebas.py
+        
+Puede ejecutar el idle de python si escribe
+
+        $ py
+
+Estando en el directorio puede ejecutar 
+
+        import Calculadora
+        Calculadora.suma((1,0),(2,1))
+        
+Y el resultado sera:
+
+        (3, 1)
 
 ## FUNCIONALIDADES:
 * Sencillas
